@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi San Valentín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fef2f2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            background-color: #ffcccc;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            padding: 30px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        p {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .heart {
+            color: red;
+            font-size: 50px;
+        }
+
+        .button {
+            background-color: #e91e63;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #d81b60;
+        }
+
+        .sparkles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 1;
+            animation: sparkle 1s linear infinite;
+        }
+
+        .sparkle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.8);
+            animation: sparkle-animation 1.5s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes sparkle-animation {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) translate(20px, 20px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0) translate(0, 0);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sparkles"></div>
+
+    <div class="card">
+        <h1>¡Feliz San Valentín!</h1>
+        <p>Hola <b>Daphne Azucena Molina</b>, aunque no podemos vernos en persona, quiero que sepas que eres muy especial para mí. Me gustaría que fueras mi San Valentín este año, aunque sea en línea.</p>
+        <p class="heart">💕 💞</p>
+        <a href="tel:+504 9222-6284" id="acceptButton" class="button">Sí, acepto ser tu San Valentín</a>
+    </div>
+
+    <script>
+        // Brillitos animados
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            const size = Math.random() * 15 + 10; // Aumenté el tamaño de los brillitos
+            const posX = Math.random() * window.innerWidth;
+            const posY = Math.random() * window.innerHeight;
+            const duration = Math.random() * 1.5 + 0.5;
+            
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+            sparkle.style.left = `${posX}px`;
+            sparkle.style.top = `${posY}px`;
+            sparkle.style.animationDuration = `${duration}s`;
+
+            document.querySelector('.sparkles').appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createSparkle, 50); // Disminuí el intervalo para generar más brillitos
+
+        // Acción al hacer clic en el botón
+        document.getElementById('acceptButton').addEventListener('click', () => {
+            const button = document.getElementById('acceptButton');
+            button.innerHTML = '¡Gracias, eres mi San Valentín! 💖';
+            button.style.backgroundColor = '#d81b60';
+            
+            // Efecto de brillitos al hacer clic
+            setInterval(() => createSparkle(), 50);
+        });
+    </script>
+</body>
+</html>
